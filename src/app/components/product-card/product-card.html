@@ -1,5 +1,7 @@
 
-<article class="product-card" [class.added]="added">
+<article class="product-card" [class.added]="added" [attr.data-produto]="produto.id">
+
+
 
   <div class="added-badge" [hidden]="!added">
     ✓ produto adicionado

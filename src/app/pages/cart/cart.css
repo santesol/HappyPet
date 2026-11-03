@@ -14,6 +14,9 @@
   align-items: start;
   font-family: 'Poppins', sans-serif;
 }
+.cart-page h1{
+  grid-column: 1 /-1;
+}
 
 .cart-list {
   display: flex;
@@ -72,11 +75,19 @@
 }
 
 .cart-item .remove button {
-  background: transparent;
-  color: rgba(0,0,0,0.6);
-  border: none;
+  background: #fff;
+  color: #c62828;
+  border: 2px solid #c62828;
+  border-radius: 999px;
+  padding: 8px 14px;
+  font-weight: 700;
   cursor: pointer;
 }
+
+.cart-item.remove button:hover{
+  background: #c62828;
+  color: #fff;
+} 
 
 .summary {
   background: #fff;

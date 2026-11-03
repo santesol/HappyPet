@@ -1,5 +1,8 @@
 import { Component, signal } from '@angular/core';
 import { RouterOutlet, RouterLink, Router } from '@angular/router';
+import { cart } from './services/cart';
+
+
 
 import { Login } from './login/login';
 import { Cadastro } from './cadastro/cadastro';
@@ -64,14 +67,6 @@ export class App {
   }
 
   carrinhoItemCount(): number {
-    const raw = localStorage.getItem('happyPet.carrinho');
-    if (!raw) return 0;
-    try {
-      const carrinho = JSON.parse(raw);
-      if (!carrinho || !Array.isArray(carrinho.items)) return 0;
-      return carrinho.items.reduce((total: number, item: any) => total + (item?.quantidade || 0), 0);
-    } catch {
-      return 0;
-    }
+    return cart.totalItems ();
   }
 }

@@ -17,13 +17,18 @@
   width: 100%;
   height: 180px;
   overflow: hidden;
+  background: #f7f7f7
+}
+.product-card[data-produto="4"] .product-image img {
+  object-fit: cover;
+  object-position: top;
 }
 
 .product-image img {
   width: 100%;
   height: 100%;
   display: block;
-  object-fit: cover;
+  object-fit: contain
 }
 
 .product-info {
@@ -96,30 +101,22 @@
     opacity: 0.9;
 }
 
-
 .favorite-button {
   width: 42px;
-
-  border: none;
+  border: 1px solid #e63946;
   border-radius: 7px;
-
-  background: #ff8738;
-  color: white;
-
+  background: white;
+  color: #e63946;
   font-size: 20px;
-
   cursor: pointer;
-
-
 }
 
 .favorite-button.active {
-  background: white;
-  color: #ff8738;
-  border: 1px solid #ff8738;
+  background: #e63946;
+  color: white;
+  border: 1px solid #e63946;
   animation: badge-pop 0.9s ease forwards;
 }
-
 .favorite-button:hover {
     opacity: 0.9;
 }
