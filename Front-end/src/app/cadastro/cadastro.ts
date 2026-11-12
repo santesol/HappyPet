@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-cadastro',
@@ -17,7 +17,10 @@ import { RouterLink } from '@angular/router';
 export class Cadastro {
   cadastroForm;
 
-  constructor(private fb: FormBuilder) {
+  constructor(
+    private fb: FormBuilder,
+    private router: Router,
+  ) {
     this.cadastroForm = this.fb.group({
       nome: ['', Validators.required],
 
@@ -64,6 +67,10 @@ export class Cadastro {
 
     localStorage.setItem('usuario', JSON.stringify(usuario));
 
+    // Inicia a sessão automaticamente após o cadastro.
+    localStorage.setItem('logado', 'true');
+    window.dispatchEvent(new Event('loginAlterado'));
+
     window.dispatchEvent(
       new CustomEvent('notificacao', {
         detail: 'Cadastro realizado com sucesso! 🐾',
@@ -71,5 +78,8 @@ export class Cadastro {
     );
 
     this.cadastroForm.reset();
+
+    // Leva o usuário para a página inicial já autenticado.
+    this.router.navigate(['/']);
   }
 }
